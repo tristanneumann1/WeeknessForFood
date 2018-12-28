@@ -18,6 +18,13 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'vue/max-attributes-per-line': ["error", {
+      "singleline": 5,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }

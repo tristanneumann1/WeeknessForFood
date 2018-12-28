@@ -21,7 +21,7 @@
           id="basic-text1"
           class="input-group-text red lighten-3"
         >
-          <font-awesome-icon :icon="fas.faSearch" />
+          <fa :icon="faSearch" />
         </span>
       </div>
     </div>
@@ -31,11 +31,10 @@
 
 <script>
 import { fas } from '@fortawesome/free-solid-svg-icons';
-console.log(fas);
 export default {
   computed: {
-    fas() {
-      return fas;
+    faSearch() {
+      return fas.faSearch;
     }
   }
 };

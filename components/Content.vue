@@ -1,10 +1,6 @@
 <template>
   <ul class="content">
-    <Recipe
-      v-for="recipe in recipes"
-      :key="recipe.id"
-      :recipe="recipe"
-    />
+    <Recipe v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
   </ul>
 </template>
 
@@ -15,27 +11,20 @@ export default {
   components: {
     Recipe
   },
-  data() {
-    return {
-      recipes: [
-        {
-          id: 1,
-          name: 'first'
-        },
-        {
-          id: 2,
-          name: 'second'
-        },
-        {
-          id: 3,
-          name: 'third'
-        },
-        0
-      ]
-    };
+  computed: {
+    recipes() {
+      return this.$store.state.recipes;
+    }
   }
 };
 </script>
 
 <style>
+.content {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
 </style>
