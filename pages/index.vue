@@ -9,7 +9,7 @@
 <script>
 import Logo from '~/components/Logo.vue';
 import Title from '~/components/Title.vue';
-import Content from '~/components/content.vue';
+import Content from '~/components/Content.vue';
 
 export default {
   components: {
