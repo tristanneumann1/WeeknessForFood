@@ -38,7 +38,8 @@ export default {
   padding: 0;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   list-style: none;
 }
 

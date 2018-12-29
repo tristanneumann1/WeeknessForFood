@@ -4,9 +4,9 @@ export const state = () => {
     recipes: [
       {
         id: 5,
-        name: 'pancakes',
+        name: 'Pancakes',
         price: 1,
-        time: 20,
+        over1H: true,
         ingredients: {
           eggs: {
             name: 'eggs',
@@ -25,13 +25,15 @@ export const state = () => {
           }
         },
         img:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSki3EQvan9kwYW5nUp3oN1hJfghcy3ca7bngkhMlh_g1ByDdOklA'
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSki3EQvan9kwYW5nUp3oN1hJfghcy3ca7bngkhMlh_g1ByDdOklA',
+        author: 'MilkMan',
+        tags: ['Breakfast', 'Vegan', 'Tasty']
       },
       {
         id: 6,
         name: 'Burger',
         price: 2,
-        time: 20,
+        over1H: false,
         ingredients: {
           eggs: {
             quantity: 1,
@@ -39,16 +41,20 @@ export const state = () => {
           }
         },
         img:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHXfz-VYOcFF3kAmjKYTIiassMEnw9NXqVfwdair4SVEG4ocK1xw'
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHXfz-VYOcFF3kAmjKYTIiassMEnw9NXqVfwdair4SVEG4ocK1xw',
+        author: 'Mr Mac Donald',
+        tags: ['Fast-food', 'Meat', 'Tasty', 'American']
       },
       {
         id: 7,
         name: 'Burrito',
         price: 3,
-        time: 365,
+        over1H: true,
         ingredients: {},
         img:
-          'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&h=350'
+          'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&h=350',
+        author: 'Consuela',
+        tags: ['Meat', 'Dinner', 'Mexican']
       }
     ]
   };
