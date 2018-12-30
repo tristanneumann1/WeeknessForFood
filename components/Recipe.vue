@@ -9,15 +9,15 @@
         <span class="recipe-author">{{ recipe.author }}</span>
       </div>
       <ul class="column-3">
-        <li v-for="tag in tags3(recipe)" :key="tag" class="tag">{{ tag }}</li>
+        <li v-for="tag in tags3(recipe)" :key="tag" class="li-tag">
+          <span class="tag">{{ tag }}</span>
+        </li>
       </ul>
       <div class="descriptors">
         <div class="prep-time">
           {{ (recipe.over1H)? '&gt;60min' : '&lt;60min' }}
         </div>
-        <div class="price">
-          <fa v-for="n in recipe.price" :key="n" :icon="faDollarSign" />
-        </div>
+        <add-to-cart :recipe="recipe"/>
       </div>
     </ul>
   </li>
@@ -25,7 +25,12 @@
 
 <script>
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import AddToCart from './AddToCart.vue';
+
 export default {
+  components: {
+    AddToCart
+  },
   props: {
     recipe: {
       type: Object,
@@ -48,6 +53,9 @@ export default {
     },
     faDollarSign() {
       return fas.faDollarSign;
+    },
+    faBookmark() {
+      return fas.faBookmark;
     }
   },
   methods: {
@@ -77,7 +85,7 @@ export default {
   flex: 2;
   height: 100%;
   position: relative;
-  margin: 0.5em;
+  padding: 0.5em;
 }
 
 .recipe-img {
@@ -95,6 +103,7 @@ export default {
 .column-2 {
   display: flex;
   flex: 2;
+  padding-left: 0.5em;
   flex-direction: column;
   text-align: left;
   justify-content: center;
@@ -122,11 +131,13 @@ export default {
   list-style: none;
 }
 
-.tag {
-  border: 1px solid black;
+.li-tag {
+  position: relative;
   margin: 3px;
   padding: 2px;
+  border: 1px solid black;
 }
+
 .descriptors {
   display: flex;
   flex: 1;

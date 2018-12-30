@@ -1,29 +1,29 @@
 export const state = () => {
   return {
-    shoppingCart: {},
+    shoppingCart: [],
     recipes: [
       {
         id: 5,
         name: 'Pancakes',
-        price: 1,
+        people: 1,
         over1H: true,
-        ingredients: {
-          eggs: {
+        ingredients: [
+          {
             name: 'eggs',
             quantity: 4,
             unit: ''
           },
-          flour: {
+          {
             name: 'flour',
             quantity: 200,
             unit: 'g'
           },
-          milk: {
+          {
             name: 'milk',
             quantity: 300,
             unit: 'ml'
           }
-        },
+        ],
         img:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSki3EQvan9kwYW5nUp3oN1hJfghcy3ca7bngkhMlh_g1ByDdOklA',
         author: 'MilkMan',
@@ -32,14 +32,25 @@ export const state = () => {
       {
         id: 6,
         name: 'Burger',
-        price: 2,
+        people: 2,
         over1H: false,
-        ingredients: {
-          eggs: {
-            quantity: 1,
+        ingredients: [
+          {
+            name: 'eggs',
+            quantity: 4,
+            unit: ''
+          },
+          {
+            name: 'beef',
+            quantity: 200,
+            unit: 'g'
+          },
+          {
+            name: 'burger buns',
+            quantity: 4,
             unit: ''
           }
-        },
+        ],
         img:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHXfz-VYOcFF3kAmjKYTIiassMEnw9NXqVfwdair4SVEG4ocK1xw',
         author: 'Mr Mac Donald',
@@ -48,9 +59,25 @@ export const state = () => {
       {
         id: 7,
         name: 'Burrito',
-        price: 3,
+        people: 3,
         over1H: true,
-        ingredients: {},
+        ingredients: [
+          {
+            name: 'beef',
+            quantity: 400,
+            unit: 'g'
+          },
+          {
+            name: 'tortilla',
+            quantity: 4,
+            unit: ''
+          },
+          {
+            name: 'eggs',
+            quantity: 1,
+            unit: ''
+          }
+        ],
         img:
           'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&h=350',
         author: 'Consuela',
@@ -61,12 +88,8 @@ export const state = () => {
 };
 
 export const mutations = {
-  addToCart(state, ingredient) {
-    if (state.shoppingCart[ingredient.name]) {
-      state.shoppingCart[ingredient.name].quantity += ingredient.quantity;
-      console.log(state.shoppingCart);
-    } else {
-      state.shoppingCart[ingredient.name] = ingredient;
-    }
+  addToCart(state, recipe) {
+    //Do person multiplication here
+    state.shoppingCart.push(recipe);
   }
 };

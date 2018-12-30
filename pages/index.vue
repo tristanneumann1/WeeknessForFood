@@ -20,7 +20,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+body {
+  background-color: #fce2c8;
+}
+
 .container {
   display: flex;
   flex-direction: column;

@@ -3,25 +3,22 @@
     <ul class="recipe-list">
       <Recipe v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
     </ul>
-    <div class="shopping-cart">
-      {{ shoppingCart }}
-    </div>
+    <Shopping-cart />
   </div>
 </template>
 
 <script>
 import Recipe from './Recipe.vue';
+import ShoppingCart from './ShoppingCart.vue';
 
 export default {
   components: {
-    Recipe
+    Recipe,
+    ShoppingCart
   },
   computed: {
     recipes() {
       return this.$store.state.recipes;
-    },
-    shoppingCart() {
-      return this.$store.state.shoppingCart;
     }
   }
 };
@@ -41,12 +38,5 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
-}
-
-.shopping-cart {
-  width: 30%;
-  margin: 0.5em;
-  background-color: yellow;
-  box-shadow: 2px 2px 1px grey;
 }
 </style>

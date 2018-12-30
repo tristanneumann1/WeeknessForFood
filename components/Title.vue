@@ -1,12 +1,7 @@
 <template>
   <div class="title-container">
     <div class="title">
-      <h1>Pick your recipes, your shopping list writes itself!</h1>
-      <img 
-        class="logo"
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/76ab2e19585305.562dce0bcf645.png"
-        alt="weekness for food logo"
-      >
+      <h1>A Weekness for food</h1>
     </div>
     <!-- Search form -->
     <div class="input-group md-form form-sm form-2 pl-0 recipe-search">
@@ -43,6 +38,7 @@ export default {
 <style scoped>
 .title {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -55,7 +51,7 @@ export default {
   align-items: center;
   text-align: center;
   width: 100%;
-  background-color: beige;
+  background-color: #ff725d;
   padding: 1em;
 }
 
