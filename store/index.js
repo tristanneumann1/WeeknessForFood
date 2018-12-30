@@ -31,7 +31,7 @@ export const state = () => {
       },
       {
         id: 6,
-        name: 'Burger',
+        name: 'Carpaccio de saint-jacques et truffe',
         people: 2,
         over1H: false,
         ingredients: [

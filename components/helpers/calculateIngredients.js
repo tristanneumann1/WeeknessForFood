@@ -1,11 +1,14 @@
 export default shoppingList => {
-  const ingredients = {};
-  shoppingList.forEach(shoppingItem => {
-    shoppingItem.ingredients.forEach(ingredient => {
-      if (ingredients[ingredient.name]) {
-        ingredients[ingredient.name].quantity += ingredient.quantity;
+  const ingredients = [];
+  const ingredientsObj = {};
+  shoppingList.forEach(recipe => {
+    recipe.ingredients.forEach(ingredient => {
+      if (ingredientsObj[ingredient.name] !== undefined) {
+        ingredients[ingredientsObj[ingredient.name]].quantity +=
+          ingredient.quantity;
       } else {
-        ingredients[ingredient.name] = { ...ingredient };
+        ingredientsObj[ingredient.name] = ingredients.length;
+        ingredients.push({ ...ingredient });
       }
     });
   });
