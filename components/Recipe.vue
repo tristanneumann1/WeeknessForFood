@@ -1,35 +1,42 @@
 <template>
   <li class="recipe">
-    <ul class="recipe-inner">
-      <div class="column-1">
-        <img :src="recipe.img" :alt="recipe.name + ' pic'" class="recipe-img">
-      </div>
-      <div class="column-2">
-        <span class="recipe-title">{{ recipe.name }}:</span>
-        <span class="recipe-author">{{ recipe.author }}</span>
-      </div>
-      <ul class="column-3">
-        <li v-for="tag in tags3(recipe)" :key="tag" class="li-tag">
-          <span class="tag">{{ tag }}</span>
-        </li>
-      </ul>
-      <div class="descriptors">
-        <div class="prep-time">
-          {{ (recipe.over1H)? '&gt;60min' : '&lt;60min' }}
+    <div class="recipe-outer">
+      <div class="recipe-inner">
+        <div class="column-1">
+          <img :src="recipe.img" :alt="recipe.name + ' pic'" class="recipe-img" @click="toggleDropDown">
         </div>
-        <add-to-cart :recipe="recipe"/>
+        <div class="column-2">
+          <span class="recipe-title" @click="toggleDropDown">{{ recipe.name }}:</span>
+          <span class="recipe-author">{{ recipe.author }}</span>
+        </div>
+        <ul class="column-3">
+          <li v-for="tag in tags3(recipe)" :key="tag" class="li-tag">
+            <span class="tag">{{ tag }}</span>
+          </li>
+        </ul>
+        <div class="column-4">
+          <div class="prep-time">
+            {{ (recipe.over1H)? '&gt;60min' : '&lt;60min' }}
+          </div>
+          <add-to-cart :recipe="recipe"/>
+        </div>
       </div>
-    </ul>
+      <transition name="drop-down">
+        <recipe-drop-down v-if="dropDown" />
+      </transition>
+    </div>
   </li>
 </template>
 
 <script>
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import AddToCart from './AddToCart.vue';
+import RecipeDropDown from './RecipeDropDown.vue';
 
 export default {
   components: {
-    AddToCart
+    AddToCart,
+    RecipeDropDown
   },
   props: {
     recipe: {
@@ -44,7 +51,7 @@ export default {
   },
   data() {
     return {
-      eggs: 0
+      dropDown: false
     };
   },
   computed: {
@@ -61,6 +68,9 @@ export default {
   methods: {
     tags3(recipe) {
       return recipe.tags.slice(0, 3);
+    },
+    toggleDropDown() {
+      this.dropDown = !this.dropDown;
     }
   }
 };
@@ -71,10 +81,20 @@ export default {
   width: 50%;
 }
 
+.recipe-outer {
+  display: flex;
+  flex-direction: column;
+  /* margin: 1em;
+  padding: 0;
+  background-color: rgb(163, 225, 280);
+  box-shadow: 3px 3px 2px grey; */
+}
+
 .recipe-inner {
   display: flex;
   height: 8em;
   margin: 1em;
+  margin-bottom: 0;
   padding: 0;
   background-color: rgb(163, 225, 280);
   box-shadow: 3px 3px 2px grey;
@@ -138,10 +158,22 @@ export default {
   border: 1px solid black;
 }
 
-.descriptors {
+.column-4 {
   display: flex;
   flex: 1;
   flex-direction: column;
   margin: 0.5em;
+}
+
+.drop-down-enter-active .drop-down-leave-active {
+  transition: all 0s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.drop-down-enter-active {
+  transform: scaleY(0);
+}
+
+.drop-down-leave-active {
+  transform: scaleY(10em);
 }
 </style>

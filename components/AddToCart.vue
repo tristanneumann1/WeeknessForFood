@@ -29,7 +29,12 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$store.commit('addToCart', Object.assign({}, this.recipe));
+      const recipeCopy = JSON.parse(JSON.stringify(this.recipe));
+      recipeCopy.ingredients = recipeCopy.ingredients.map(ingredient => {
+        ingredient.quantity *= this.forPersons / 4;
+        return ingredient;
+      });
+      this.$store.commit('addToCart', recipeCopy);
     },
     addPerson() {
       if (this.forPersons < 20) {
