@@ -18,11 +18,11 @@
           <div class="prep-time">
             {{ (recipe.over1H)? '&gt;60min' : '&lt;60min' }}
           </div>
-          <add-to-cart :recipe="recipe"/>
+          <add-to-cart :recipe="recipe" :for-persons-state="{ forPersons, addPerson, removePerson }"/>
         </div>
       </div>
       <transition name="drop-down">
-        <recipe-drop-down v-if="dropDown" />
+        <recipe-drop-down v-if="dropDown" :recipe="recipe" :for-persons="forPersons"/>
       </transition>
     </div>
   </li>
@@ -51,7 +51,8 @@ export default {
   },
   data() {
     return {
-      dropDown: false
+      dropDown: false,
+      forPersons: 4
     };
   },
   computed: {
@@ -71,6 +72,16 @@ export default {
     },
     toggleDropDown() {
       this.dropDown = !this.dropDown;
+    },
+    addPerson() {
+      if (this.forPersons < 20) {
+        this.forPersons++;
+      }
+    },
+    removePerson() {
+      if (this.forPersons > 1) {
+        this.forPersons--;
+      }
     }
   }
 };

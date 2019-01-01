@@ -1,9 +1,9 @@
 <template>
   <div class="add-to-cart">
     <div class="person-selector">
-      <a class="arrow-button" @click="addPerson">&#x25B2;</a>
-      <span>{{ forPersons }}</span>
-      <a class="arrow-button" @click="removePerson">&#x25BC;</a>
+      <a class="arrow-button" @click="forPersonsState.addPerson">&#x25B2;</a>
+      <span>{{ forPersonsState.forPersons }}</span>
+      <a class="arrow-button" @click="forPersonsState.removePerson">&#x25BC;</a>
     </div>
     <button @click="addToCart">Make it!</button>
   </div>
@@ -20,31 +20,22 @@ export default {
           name: 'Recipe missing'
         };
       }
+    },
+    forPersonsState: {
+      type: Object,
+      default() {
+        return { forPersons: 4 };
+      }
     }
-  },
-  data() {
-    return {
-      forPersons: 4
-    };
   },
   methods: {
     addToCart() {
       const recipeCopy = JSON.parse(JSON.stringify(this.recipe));
       recipeCopy.ingredients = recipeCopy.ingredients.map(ingredient => {
-        ingredient.quantity *= this.forPersons / 4;
+        ingredient.quantity *= this.forPersonsState.forPersons / 4;
         return ingredient;
       });
       this.$store.commit('addToCart', recipeCopy);
-    },
-    addPerson() {
-      if (this.forPersons < 20) {
-        this.forPersons++;
-      }
-    },
-    removePerson() {
-      if (this.forPersons > 1) {
-        this.forPersons--;
-      }
     }
   }
 };

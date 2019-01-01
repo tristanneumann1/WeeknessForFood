@@ -1,6 +1,27 @@
 <template>
   <div class="drop-down-container">
-    {{ recipe.instructions }}
+    <div class="row-1">
+      <ul class="ingredient-list">
+        <li v-for="ingredient in recipe.ingredients" :key="ingredient.name" class="ingredient">
+          <span class="ingredient-name">
+            {{ capitaliseName(ingredient.name) + ': ' }}
+          </span>
+          <span class="ingredient-quantity">
+            {{ forPersonsIngredientQuantity(ingredient.quantity, forPersons) + ingredient.unit }}
+          </span>
+        </li>
+      </ul>
+      <p class="instructions">
+        {{ recipe.instructions }}
+      </p>
+    </div>
+    <div>
+      <h5>Chef's notes:</h5>
+      <br>
+      <p>
+        {{ recipe.chefsNote }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -15,14 +36,28 @@ export default {
           name: 'Recipe Missing'
         };
       }
+    },
+    forPersons: {
+      type: Number,
+      default() {
+        return 4;
+      }
+    }
+  },
+  methods: {
+    forPersonsIngredientQuantity(quantity, forPersons) {
+      return (quantity * forPersons) / 4;
+    },
+    capitaliseName(name) {
+      name = name.trim();
+      return name[0].toUpperCase() + name.slice(1);
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .drop-down-container {
-  z-index: 1;
   display: flex;
   flex-direction: column;
   margin: 1em;
@@ -33,5 +68,38 @@ export default {
   transform-origin: top;
   transition: transform 0.4s ease-in-out;
   overflow: hidden;
+}
+
+.row-1 {
+  display: flex;
+}
+
+.ingredient-list {
+  flex: 1;
+  padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.ingredient {
+  display: flex;
+  width: 100%;
+  text-align: left;
+}
+
+/* .ingredient-quantity {
+  flex: 1;
+}*/
+
+.ingredient-quantity {
+  margin-left: 1em;
+}
+
+.instructions {
+  flex: 1;
+  white-space: pre;
 }
 </style>
