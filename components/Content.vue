@@ -3,17 +3,22 @@
     <ul class="recipe-list">
       <Recipe v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
     </ul>
-    <Shopping-cart />
+    <div class="shopping">
+      <Shopping-list />
+      <Shopping-cart />
+    </div>
   </div>
 </template>
 
 <script>
 import Recipe from './Recipe.vue';
+import ShoppingList from './ShoppingList.vue';
 import ShoppingCart from './ShoppingCart.vue';
 
 export default {
   components: {
     Recipe,
+    ShoppingList,
     ShoppingCart
   },
   computed: {
@@ -38,5 +43,9 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
+}
+
+.shopping {
+  width: 30%;
 }
 </style>

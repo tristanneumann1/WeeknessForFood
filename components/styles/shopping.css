@@ -1,0 +1,20 @@
+.shopping {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  margin: 0.5em;
+  background-color: white;
+  box-shadow: 2px 2px 1px grey;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.shopping-title {
+  font-size: 1.5em;
+}
+
+.shopping ul {
+  margin-top: 1em;
+  list-style: none;
+  text-align: left;
+}

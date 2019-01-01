@@ -35,7 +35,10 @@ export default {
         ingredient.quantity *= this.forPersonsState.forPersons / 4;
         return ingredient;
       });
-      this.$store.commit('addToCart', recipeCopy);
+      this.$store.commit('addToCart', {
+        recipe: recipeCopy,
+        forPersons: this.forPersonsState.forPersons
+      });
     }
   }
 };

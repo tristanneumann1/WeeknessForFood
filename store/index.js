@@ -2,7 +2,8 @@ import { Recipe, pancake, burger, burrito } from './Recipe.js';
 
 export const state = () => {
   return {
-    shoppingCart: [],
+    shoppingList: [],
+    shoppingListCounter: 0,
     recipes: [pancake, burger, burrito],
     recipeObj: {
       0: 0,
@@ -13,8 +14,13 @@ export const state = () => {
 };
 
 export const mutations = {
-  addToCart(state, recipe) {
-    state.shoppingCart.push(recipe);
+  addToCart(state, { recipe, forPersons }) {
+    state.shoppingList.push({
+      id: this.shoppingListCounter,
+      forPersons,
+      recipe
+    });
+    state.shoppingListCounter++;
   }
 };
 

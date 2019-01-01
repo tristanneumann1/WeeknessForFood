@@ -1,8 +1,8 @@
 export default shoppingList => {
   const ingredients = [];
   const ingredientsObj = {};
-  shoppingList.forEach(recipe => {
-    recipe.ingredients.forEach(ingredient => {
+  shoppingList.forEach(shoppingItem => {
+    shoppingItem.recipe.ingredients.forEach(ingredient => {
       if (ingredientsObj[ingredient.name] !== undefined) {
         ingredients[ingredientsObj[ingredient.name]].quantity +=
           ingredient.quantity;
