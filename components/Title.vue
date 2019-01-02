@@ -22,7 +22,8 @@
       </div>
     </div>
     <div class="add-recipe">
-      <button>Add Recipe</button>
+      <button v-if="this.$store.state.pageDisplay !== 2" @click="()=>{toggleDisplay(2)}">Add Recipe</button>
+      <button v-else @click="()=>{toggleDisplay(1)}">Return Browsing</button>
     </div>
   </div>
 </template>
@@ -33,6 +34,11 @@ export default {
   computed: {
     faSearch() {
       return fas.faSearch;
+    }
+  },
+  methods: {
+    toggleDisplay(newPage) {
+      this.$store.commit('changePage', newPage);
     }
   }
 };

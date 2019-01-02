@@ -2,6 +2,7 @@ import { Recipe, pancake, burger, burrito, hotCheetoCake } from './Recipe.js';
 
 export const state = () => {
   return {
+    pageDisplay: 1,
     shoppingList: [],
     shoppingListCounter: 0,
     recipes: [pancake, burger, burrito, hotCheetoCake],
@@ -21,6 +22,9 @@ export const mutations = {
       recipe
     });
     state.shoppingListCounter++;
+  },
+  changePage(state, newPage) {
+    state.pageDisplay = newPage;
   }
 };
 

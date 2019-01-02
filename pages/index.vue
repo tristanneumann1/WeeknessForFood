@@ -1,21 +1,21 @@
 <template>
   <section class="container">
-    <!-- BODY -->
     <Title />
-    <Content />
+    <Content v-if="this.$store.state.pageDisplay === 1" />
+    <AddRecipe v-else />
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
 import Title from '~/components/Title.vue';
 import Content from '~/components/Content.vue';
+import AddRecipe from '~/components/AddRecipe.vue';
 
 export default {
   components: {
-    Logo,
     Title,
-    Content
+    Content,
+    AddRecipe
   }
 };
 </script>
