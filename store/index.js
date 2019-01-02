@@ -1,10 +1,10 @@
-import { Recipe, pancake, burger, burrito } from './Recipe.js';
+import { Recipe, pancake, burger, burrito, hotCheetoCake } from './Recipe.js';
 
 export const state = () => {
   return {
     shoppingList: [],
     shoppingListCounter: 0,
-    recipes: [pancake, burger, burrito],
+    recipes: [pancake, burger, burrito, hotCheetoCake],
     recipeObj: {
       0: 0,
       1: 1,

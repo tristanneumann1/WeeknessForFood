@@ -11,9 +11,7 @@
           </span>
         </li>
       </ul>
-      <p class="instructions">
-        {{ recipe.instructions }}
-      </p>
+      <p class="instructions">{{ recipe.instructions }}</p>
     </div>
     <div>
       <h5>Chef's notes:</h5>
@@ -101,5 +99,6 @@ export default {
 .instructions {
   flex: 1;
   white-space: pre;
+  text-align: left;
 }
 </style>

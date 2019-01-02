@@ -106,4 +106,71 @@ const burrito = new Recipe(2, {
   chefsNote: 'tastes great with cranberry bagels'
 });
 
-export { Recipe, pancake, burger, burrito };
+const hotCheetoCake = new Recipe(3, {
+  id: 3,
+  name: 'Hot Cheeto Cake',
+  people: 4,
+  over1H: true,
+  ingredients: [
+    {
+      id: 6,
+      name: 'cheeto chips',
+      quantity: 2,
+      unit: 'packs'
+    },
+    {
+      id: 7,
+      name: 'cheeto powder',
+      quantity: 2,
+      unit: 'packs'
+    },
+    {
+      id: 8,
+      name: 'flour',
+      quantity: 750,
+      unit: 'g'
+    },
+    {
+      id: 0,
+      name: 'eggs',
+      quantity: 3,
+      unit: ''
+    },
+    {
+      id: 9,
+      name: 'fork',
+      quantity: 4,
+      unit: ''
+    },
+    {
+      id: 10,
+      name: 'plate',
+      quantity: 4,
+      unit: ''
+    },
+    {
+      id: 11,
+      name: 'butter',
+      quantity: 750,
+      unit: 'g'
+    },
+    {
+      id: 12,
+      name: 'red food colouring',
+      quantity: 7,
+      unit: 'drops'
+    }
+  ],
+  img:
+    'https://assets3.thrillist.com/v1/image/1785336/size/tmg-facebook_social.jpg',
+  author: 'Lara The Hottie',
+  tags: ['Hot', 'Cheeto', 'Dessert', 'Hot Cheeto'],
+  instructions: `Step 1: Ponder life choices
+  Step 2: begin cooking and immediately regret it
+  Step 3: taste it and add more cheetos
+  Step 4: throw it in the oven
+  Step 5: serve it to your friends cause it's too gross to eat`,
+  chefsNote: 'Never make this in your own kitchen'
+});
+
+export { Recipe, pancake, burger, burrito, hotCheetoCake };
