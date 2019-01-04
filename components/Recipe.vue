@@ -87,7 +87,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .recipe {
   width: 50%;
 }
@@ -171,6 +171,7 @@ export default {
 
 .column-4 {
   display: flex;
+  justify-content: space-around;
   flex: 1;
   flex-direction: column;
   margin: 0.5em;

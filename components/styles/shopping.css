@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   height: fit-content;
-  margin: 0.5em;
+  margin: 0.5em 0;
   background-color: white;
   box-shadow: 2px 2px 1px grey;
   font-family: 'Permanent Marker', cursive;
@@ -15,6 +15,7 @@
 
 .shopping ul {
   margin-top: 1em;
+  /* padding: 0; */
   list-style: none;
   text-align: left;
 }

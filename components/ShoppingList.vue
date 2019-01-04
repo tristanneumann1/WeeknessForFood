@@ -25,14 +25,12 @@ export default {
 </script>
 
 <style scoped>
-/* @import 'styles/shopping.css'; */
-
 .shopping {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: fit-content;
-  margin: 0.5em;
+  margin: 0.5em 0;
   background-color: white;
   box-shadow: 2px 2px 1px grey;
   font-family: 'Permanent Marker', cursive;

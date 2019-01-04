@@ -9,7 +9,7 @@
 <script>
 import Title from '~/components/Title.vue';
 import Content from '~/components/Content.vue';
-import AddRecipe from '~/components/AddRecipe.vue';
+import AddRecipe from '~/components/recipe_form/AddRecipe.vue';
 
 export default {
   components: {
