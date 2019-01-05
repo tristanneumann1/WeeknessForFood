@@ -14,6 +14,7 @@ export default {};
 <style>
 .can-toggle {
   position: relative;
+  padding-left: 0.5em;
 }
 .can-toggle *,
 .can-toggle *:before,

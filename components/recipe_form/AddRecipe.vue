@@ -22,7 +22,7 @@
                 <toggle-switch />
               </div>
               <span>Recipe is For:</span> 
-              <add-to-cart :recipe="recipe" :for-persons-state="{ forPersons: 4 }"/>
+              <add-to-cart :recipe="recipe" :for-persons-state="{ forPersons, addPerson, removePerson }"/>
             </div>
           </div>
           <div class="drop-down-container">
@@ -56,6 +56,24 @@ export default {
   components: {
     ToggleSwitch,
     AddToCart
+  },
+  data() {
+    return {
+      recipe: {},
+      forPersons: 4
+    };
+  },
+  methods: {
+    addPerson() {
+      if (this.forPersons < 20) {
+        this.forPersons++;
+      }
+    },
+    removePerson() {
+      if (this.forPersons > 1) {
+        this.forPersons--;
+      }
+    }
   }
 };
 </script>
@@ -80,8 +98,7 @@ export default {
 .recipe-inner {
   display: flex;
   height: 8em;
-  margin: 1em;
-  margin-bottom: 0;
+  margin: 0.5em;
   padding: 0;
 }
 
@@ -149,7 +166,6 @@ export default {
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin: 0.5em;
 }
 
 .drop-down-container {

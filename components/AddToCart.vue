@@ -26,7 +26,15 @@ export default {
     forPersonsState: {
       type: Object,
       default() {
-        return { forPersons: 4 };
+        return {
+          forPersons: 4,
+          addPerson() {
+            console.log('state missing');
+          },
+          removePerson() {
+            console.log('state missing');
+          }
+        };
       }
     }
   },
@@ -49,7 +57,7 @@ export default {
 <style scoped>
 .add-to-cart {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .arrow-button {
