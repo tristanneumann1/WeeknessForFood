@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const RecipeTagSchema = new mongoose.Schema({
-  recipeId: Number,
-  tagId: Number
+  recipeId: String,
+  tagId: String
 });
 
 const RecipeTag = mongoose.model('RecipeTag', RecipeTagSchema);

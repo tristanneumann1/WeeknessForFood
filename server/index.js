@@ -21,11 +21,13 @@ async function start() {
   const nuxt = new Nuxt(config);
 
   // Build only in dev mode
-  if (config.dev) {
-    const builder = new Builder(nuxt);
-    await builder.build();
-  }
+
+  // if (config.dev) {
+  //   const builder = new Builder(nuxt);
+  //   await builder.build();
+  // }
   app.use(parser.urlencoded({ extended: false }));
+  app.use(parser.json());
   // Give nuxt middleware to express
   app.use('/api', router);
   app.use(nuxt.render);
