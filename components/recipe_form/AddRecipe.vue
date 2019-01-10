@@ -1,6 +1,6 @@
 <template>
   <div class="add-recipe-container">
-    <form>
+    <form @submit="addRecipe">
       <div class="recipe">
         <div class="recipe-outer">
           <div class="recipe-inner">
@@ -8,18 +8,18 @@
               <!-- <img :src="recipe.img" :alt="recipe.name + ' pic'" class="recipe-img" @click="toggleDropDown"> -->
             </div>
             <div class="column-2">
-              <input class="recipe-title" placeholder="Name of Dish">
-              <input class="recipe-author" placeholder="Your Name">
+              <input v-model="title" class="recipe-title" placeholder="Name of Dish">
+              <input v-model="author" class="recipe-author" placeholder="Your Name">
             </div>
             <ul class="column-3">
-              <li v-for="tag in ['  tag1', '  tag2', '  tag3']" :key="tag" class="li-tag">
-                <input :placeholder="tag" class="tag">
+              <li v-for="tag in ['tag1', 'tag2', 'tag3']" :key="tag" class="li-tag">
+                <input :v-model="tag" :placeholder="'  ' + tag" class="tag">
               </li>
             </ul>
             <div class="column-4">
               <div class="prep-time">
                 Time to make:
-                <toggle-switch />
+                <toggle-switch v-model="over1H"/>
               </div>
               <span>Recipe is For:</span> 
               <add-to-cart :recipe="recipe" :for-persons-state="{ forPersons, addPerson, removePerson }"/>
@@ -28,22 +28,18 @@
           <div class="drop-down-container">
             <div class="row-1">
               <span>Ingredients:</span>
-              <ul class="ingredient-list">
-                <li v-for="ingredient in [{name: 'first'}]" :key="ingredient.name" class="ingredient">
-                  <input class="ingredient-name" placeholder="item">
-                  <input class="ingredient-quantity" placeholder="quantity">
-                </li>
-              </ul>
+              <ingredients-list v-model="ingredients"/>
               <span>Recipe:</span>
-              <input class="instructions" placeholder="Input Instructions Here">
+              <textarea v-model="instructions" class="instructions" placeholder="Input Instructions Here"/>
             </div>
-            <div>
+            <div class="row-2">
               <h3>Chef's notes:</h3>
               <br>
-              <input placeholder="Chef's notes here">
+              <textarea v-model="chefsNotes" placeholder="Chef's notes here"/>
             </div>
           </div>
         </div>
+        <button type="submit">Add Recipe</button>
       </div>
     </form>
   </div>
@@ -52,15 +48,26 @@
 <script>
 import ToggleSwitch from './ToggleSwitch.vue';
 import AddToCart from '../AddToCart.vue';
+import IngredientsList from './IngredientsList.vue';
 export default {
   components: {
     ToggleSwitch,
-    AddToCart
+    AddToCart,
+    IngredientsList
   },
   data() {
     return {
       recipe: {},
-      forPersons: 4
+      forPersons: 4,
+      title: '',
+      author: '',
+      tag1: '',
+      tag2: '',
+      tag3: '',
+      over1H: true,
+      ingredients: [],
+      instructions: '',
+      chefsNotes: ''
     };
   },
   methods: {
@@ -73,7 +80,8 @@ export default {
       if (this.forPersons > 1) {
         this.forPersons--;
       }
-    }
+    },
+    addRecipe() {}
   }
 };
 </script>
@@ -179,26 +187,6 @@ export default {
 
 .row-1 {
   display: flex;
-}
-
-.ingredient-list {
-  flex: 1;
-  padding-left: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-}
-
-.ingredient {
-  display: flex;
-  width: 100%;
-  text-align: left;
-}
-
-.ingredient-quantity {
-  margin-left: 1em;
 }
 
 .instructions {

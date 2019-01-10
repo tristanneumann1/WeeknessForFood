@@ -1,6 +1,6 @@
 <template>
   <div class="can-toggle">
-    <input id="a" type="checkbox">
+    <input id="a" v-model="over1H" type="checkbox">
     <label for="a">
       <div class="can-toggle__switch" data-checked=">1hr" data-unchecked="<1hr"/>
     </label>
@@ -8,7 +8,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    value: {
+      type: Boolean,
+      default() {
+        return true;
+      }
+    }
+  },
+  data() {
+    return {
+      over1H: true
+    };
+  },
+  watch: {
+    over1H(val) {
+      this.$emit('input', val);
+    }
+  }
+};
 </script>
 
 <style>

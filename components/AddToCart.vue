@@ -28,6 +28,7 @@ export default {
       default() {
         return {
           forPersons: 4,
+          initiallyFor: 4,
           addPerson() {
             console.log('state missing');
           },
@@ -42,7 +43,8 @@ export default {
     addToCart() {
       const recipeCopy = JSON.parse(JSON.stringify(this.recipe));
       recipeCopy.ingredients = recipeCopy.ingredients.map(ingredient => {
-        ingredient.quantity *= this.forPersonsState.forPersons / 4;
+        ingredient.quantity *=
+          this.forPersonsState.forPersons / this.forPersonsState.initiallyFor;
         return ingredient;
       });
       this.$store.commit('addToCart', {

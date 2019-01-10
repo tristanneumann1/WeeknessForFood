@@ -4,7 +4,7 @@
       My Shopping List
     </span>
     <ul>
-      <li v-for="ingredient in calculateIngredients" :key="ingredient.name">{{ ingredient.name }} : {{ ingredient.quantity + ' ' + ingredient.unit }}</li>
+      <li v-for="ingredient in calculateIngredients" :key="ingredient.name">{{ ingredient.name }} : {{ rounded(ingredient.quantity) + ' ' + ingredient.unit }}</li>
     </ul>
   </div>  
 </template>
@@ -19,6 +19,11 @@ export default {
     },
     calculateIngredients() {
       return calculateIngredients(this.$store.state.shoppingList);
+    }
+  },
+  methods: {
+    rounded(value) {
+      return Math.floor(100 * value) / 100;
     }
   }
 };

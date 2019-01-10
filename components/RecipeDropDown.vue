@@ -44,7 +44,9 @@ export default {
   },
   methods: {
     forPersonsIngredientQuantity(quantity, forPersons) {
-      return (quantity * forPersons) / 4;
+      return (
+        Math.floor((100 * quantity * forPersons) / this.recipe.people) / 100
+      );
     },
     capitaliseName(name) {
       name = name.trim();
